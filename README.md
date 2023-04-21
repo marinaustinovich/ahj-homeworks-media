@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/vjtoctclia1lim2g/branch/main?svg=true)](https://ci.appveyor.com/project/marinaustinovich/ahj-homeworks-media/branch/main)
 
 ### Общая легенда
 
