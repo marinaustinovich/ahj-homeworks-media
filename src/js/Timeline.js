@@ -84,7 +84,7 @@ export default class Timeline {
 
   writeVideo() {
     this.toggleMediaButtonVisibility();
-    this.setupMediaRecorder({ video: true });
+    this.setupMediaRecorder({ audio: true, video: true });
   }
 
   toggleMediaButtonVisibility() {
@@ -93,6 +93,8 @@ export default class Timeline {
   }
 
   async setupMediaRecorder(constraints) {
+    // Блокируем кнопку "Start" в начале функции
+    this.startButton.disabled = true;
     let chunks = [];
     try {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -102,14 +104,16 @@ export default class Timeline {
 
       this.mediaRecorder.addEventListener('stop', async () => {
         stopTimer();
-        chunks = [];
 
         const mediaUrl = Timeline.createMediaUrl(chunks, constraints);
         const result = await this.getGeoData();
         this.post = new PostMedia(result, mediaUrl, constraints);
+        chunks = [];
         this.container.querySelector('.media-button-wrapper').style.display = 'block';
         this.container.querySelector('.media-action-wrapper').style.display = 'none';
       });
+      // Разблокируем кнопку "Start" после успешной инициализации mediaRecorder
+      this.startButton.disabled = false;
     } catch (error) {
       console.error('Ошибка при получении доступа к микрофону или камере:', error);
       this.startButton.disabled = false;
@@ -125,17 +129,23 @@ export default class Timeline {
   }
 
   startRecording() {
-    this.startButton.disabled = true;
-    this.stopButton.disabled = false;
-
-    this.mediaRecorder.start();
-    startTimer();
+    if (this.mediaRecorder) {
+      this.startButton.disabled = true;
+      this.stopButton.disabled = false;
+  
+      this.mediaRecorder.start();
+      startTimer();
+    } else {
+      console.error('Ошибка: mediaRecorder не определен');
+    }
   }
 
   stopRecording() {
     this.startButton.disabled = false;
     this.stopButton.disabled = true;
 
-    this.mediaRecorder.stop();
+    if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
+      this.mediaRecorder.stop();
+    }
   }
 }

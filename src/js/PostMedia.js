@@ -20,8 +20,8 @@ export default class PostMedia {
           <p class="text-post">${this.textarea.value}</p>
           ${
   this.constraints.video
-    ? `<video src="${this.mediaUrl}" controls></video>`
-    : `<audio src="${this.mediaUrl}" controls></audio>`
+    ? `<video src="${this.mediaUrl}" controls crossorigin="anonymous"></video>`
+    : `<audio src="${this.mediaUrl}" controls crossorigin="anonymous"></audio>`
 }
       </div>
       <div class="geodata">

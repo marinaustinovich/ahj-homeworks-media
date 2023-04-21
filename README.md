@@ -1,5 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/vjtoctclia1lim2g/branch/main?svg=true)](https://ci.appveyor.com/project/marinaustinovich/ahj-homeworks-media/branch/main)
 
+deployment: https://marinaustinovich.github.io/ahj-homeworks-media/
 ### Общая легенда
 
 Вам предстоит создать проект Timeline — некую ленту постов человека, где он может прикреплять текстовые посты, а также записывать аудио и видео в привязке к своей геопозиции.
