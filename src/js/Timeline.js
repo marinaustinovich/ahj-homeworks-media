@@ -132,7 +132,7 @@ export default class Timeline {
     if (this.mediaRecorder) {
       this.startButton.disabled = true;
       this.stopButton.disabled = false;
-  
+
       this.mediaRecorder.start();
       startTimer();
     } else {
