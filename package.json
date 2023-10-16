@@ -1,6 +1,6 @@
 {
   "name": "ahj-homeworks-media",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "three tasks about geolocation, notification and media",
   "main": "index.js",
   "scripts": {
