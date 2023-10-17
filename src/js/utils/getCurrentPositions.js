@@ -1,5 +1,5 @@
-export default function getCurrentPositions() {
-  return new Promise((resolve, reject) => {
+const getCurrentPositions = () => (
+  new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -14,5 +14,7 @@ export default function getCurrentPositions() {
     } else {
       reject(new Error('Geolocation is not supported by this browser.'));
     }
-  });
-}
+  })
+);
+
+export default getCurrentPositions;

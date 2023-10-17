@@ -1,0 +1,85 @@
+#post-content {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 80px;
+  resize: none;
+  overflow: auto;
+}
+
+#post-content:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 2px rgba(255, 0, 76, 0.25);
+}
+
+.media-action-wrapper {
+  display: none;
+}
+
+.text-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+button.audio-button {
+  right: 60px;
+  background: url("../../img/audio-icon_32.png") center no-repeat;
+  background-size: contain;
+}
+
+button.video-button {
+  right: 20px;
+  background: url("../../img/video-camera-icon_32.png") center no-repeat;
+  background-size: contain;
+}
+
+button.start-media {
+  right: 120px;
+  top: 36%;
+  background: url("../../img/start-icon_32.png") center no-repeat;
+  background-size: contain;
+}
+
+button.stop-media {
+  right: 20px;
+  top: 36%;
+  background: url("../../img/stop-icon_32.png") center no-repeat;
+  background-size: contain;
+}
+
+.timer {
+  position: absolute;
+  top: 22%;
+  right: 60px;
+  font-size: 1.5rem;
+}
+
+.geolocation-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 24px;
+  border: 1px solid #cb1650;
+  padding: 15px 20px;
+  width: 40%;
+  margin: auto;
+  border-radius: 5px;
+  color: red;
+  font-weight: 700;
+  background-color: #ffd7d7;
+}
+
+.geolocation-instructions a {
+  color: rgb(53, 19, 19);
+  text-decoration: none; 
+  transition: color 0.2s;
+}
+
+.geolocation-instructions a:hover {
+  color: rgb(19, 118, 211);
+}

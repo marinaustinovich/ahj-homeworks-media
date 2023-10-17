@@ -12,6 +12,9 @@ body {
 }
 
 .container {
+  gap: 30px;
+  flex-direction: column;
+  display: flex;
   background-color: antiquewhite;
   border: 1px solid #9e2c2c;
   border-radius: 0.75rem;
@@ -19,31 +22,6 @@ body {
   margin-bottom: 1rem;
   min-height: 250px;
 }
-
-.text-container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-#post-content {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  font-size: 14px;
-  line-height: 1.5;
-  min-height: 80px;
-  resize: none;
-  overflow: auto;
-}
-
-#post-content:focus {
-  outline: none;
-  border: none;
-  box-shadow: 0 0 0 2px rgba(255, 0, 76, 0.25);;
-}
-
 
 .btn {
   position: absolute;
@@ -56,117 +34,16 @@ body {
   transform: translateY(-50%);
 }
 
-button.audio-button {
-  right: 60px;
-  background: url("../img/audio-icon_32.png") center no-repeat;
-  background-size: contain;
-}
-
-button.video-button {
-  right: 20px;
-  background: url("../img/video-camera-icon_32.png") center no-repeat;
-  background-size: contain;
-}
-
-/* for audio action */
-.media-action-wrapper {
-  display: none;
-}
-
-button.start-media {
-  right: 120px;
-  top: 36%;
-  background: url("../img/start-icon_32.png") center no-repeat;
-  background-size: contain;
-}
-
-button.stop-media {
-  right:20px;
-  top: 36%;
-  background: url("../img/stop-icon_32.png") center no-repeat;
-  background-size: contain;
-}
-
-.timer {
-  position: absolute;
-    top: 22%;
-    right: 60px;
-    font-size: 1.5rem;
-}
-
-/* for post element */
-.post {
-  position: relative;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  background-color: #fff;
-  width: 80%;
-  margin: 0 auto 20px auto;
-}
-
-.post-date {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 12px;
-  color: #777;
-}
-
-.post-content {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.text-post {
-  text-align: left;
-}
-
-.geodata {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 12px;
-  color: #777;
-}
-
-.geodata-icon {
-  position: relative;
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  background: url('../img/geo-fill-icon_32.png') center no-repeat;
-  background-size: contain;
-  vertical-align: middle;
-  margin-left: 5px;
-}
-
-button:focus, input:focus {
-  background-color: #d89090;
+button:focus,
+input:focus {
+  background-color: #f7dada;
   color: whitesmoke;
   outline: none;
 }
 
-button:hover, input:hover {
-  border: 1px solid rgb(184, 123, 123)
-}
-
-.geo {
-  padding: 0.75rem;
-  border-radius: 10px;
-  margin-bottom: 0.5rem;
-}
-
-audio {
-  width: 100%;
-  height: 30px;
-  margin-top: 10px;
-}
-
-video {
-  width: 100%;
-  margin-top: 10px;
-  
+button:hover,
+input:hover {
+  border: 1px solid rgb(184, 123, 123);
 }
 
 /* for modal */
@@ -196,7 +73,6 @@ video {
 
 .modal h4 {
   margin-bottom: 10px;
-  
 }
 
 .modal p {
@@ -209,23 +85,16 @@ video {
   text-align: left;
 }
 
-.geo-input {
-  border: 1px solid black;
-  padding: 0.5rem;
-  width: 100%;
-  margin-top: 10px;
+.btn-modal-wrapper {
+  display: flex;
+  justify-content: end;
 }
 
-.close-geo, .add-geo {
+.close-btn {
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 7px;
   margin: 5px;
-}
-
-.btn-modal-wrapper {
-  display: flex;
-  justify-content: end;
 }
 
 .error-container {

@@ -5,6 +5,10 @@ export default class ModalMedia {
     }
 
     this.container = container;
+    this.init();
+  }
+
+  init() {
     this.drawUi();
     this.events();
   }
@@ -19,13 +23,13 @@ export default class ModalMedia {
             Чтобы изменить настройки разрешений для данного сайта, следуйте этим шагам:
 
             Откройте страницу сайта, для которого вы хотите изменить разрешения.
-            Найдите значок "замка" слева от адресной строки браузера.
-            Нажмите на значок "замка" и выберите "Настройки сайта" или "Разрешения" (зависит от браузера).
+            Найдите значок "замка" или "восклицательного знака" слева от адресной строки браузера.
+            Нажмите на этот значок и выберите "Настройки сайта" или "Разрешения" (зависит от браузера).
             Найдите настройку микрофона/камеры и измените ее на "Разрешить".
             Закройте настройки и обновите страницу. Теперь сайт должен иметь доступ к микрофону/камере.
           </p>
           <div class="btn-modal-wrapper">
-            <button class="close-geo">Закрыть</button>
+            <button class="close-btn">Закрыть</button>
           </div>
         </div>
       </div>
@@ -33,7 +37,7 @@ export default class ModalMedia {
   }
 
   events() {
-    const closeButton = document.querySelector('.close-geo');
+    const closeButton = document.querySelector('.close-btn');
     closeButton.addEventListener('click', () => this.closeModal());
   }
 

@@ -1,6 +1,5 @@
-/* eslint-disable */
-import Timeline from "./Timeline";
+import Timeline from './Timeline/Timeline';
 
-console.log('it works!');
-new Timeline(document.getElementById('timeline-container'));
+const timeline = new Timeline(document.getElementById('timeline-container'));
 
+timeline.init();
