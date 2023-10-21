@@ -52,7 +52,7 @@ export default class ModalGeo {
 
   showError(message) {
     this.error.textContent = message;
-    this.error.style.display = 'block';
+    this.error.style.display = 'flex';
   }
 
   hideError() {

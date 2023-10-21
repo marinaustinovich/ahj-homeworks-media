@@ -80,28 +80,19 @@ export default class Timeline {
 
   async getGeoData() {
     if ('geolocation' in navigator) {
-      const permissionStatus = await navigator.permissions.query({
-        name: 'geolocation',
-      });
-
-      if (permissionStatus.state === 'granted') {
-        try {
-          const position = await new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(
-              (pos) => resolve(pos.coords),
-              (error) => reject(error),
-            );
-          });
-          const coordinates = {
-            latitude: position.latitude,
-            longitude: position.longitude,
-          };
-
-          return coordinates;
-        } catch (error) {
-          return this.showModalGeo();
-        }
-      } else {
+      try {
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            (pos) => resolve(pos.coords),
+            (error) => reject(error),
+          );
+        });
+        const coordinates = {
+          latitude: position.latitude,
+          longitude: position.longitude,
+        };
+        return coordinates;
+      } catch {
         return this.showModalGeo();
       }
     } else {
@@ -140,8 +131,8 @@ export default class Timeline {
       this.recorder.addEventListener('stop', () => this.handleRecordingStop(constraints));
 
       this.startButton.disabled = false;
-    } catch (error) {
-      this.handleError(error);
+    } catch {
+      this.handleError();
     }
   }
 
@@ -151,7 +142,12 @@ export default class Timeline {
     const mediaUrl = Timeline.createMediaUrl(this.chunks, constraints);
     this.getGeoData()
       .then((result) => {
-        this.post = new Post(result, this.textarea.value, mediaUrl, constraints);
+        this.post = new Post(
+          result,
+          this.textarea.value,
+          mediaUrl,
+          constraints,
+        );
         this.textarea.value = '';
         this.container.querySelector('.media-button-wrapper').style.display = 'block';
         this.container.querySelector('.media-action-wrapper').style.display = 'none';
@@ -161,10 +157,11 @@ export default class Timeline {
     this.chunks = [];
   }
 
-  handleError(error) {
-    console.error('Ошибка при получении доступа к микрофону или камере:', error);
+  handleError() {
     this.startButton.disabled = false;
-    this.modalMedia = new ModalMedia(this.container.querySelector('.modal-window'));
+    this.modalMedia = new ModalMedia(
+      this.container.querySelector('.modal-window'),
+    );
   }
 
   static createMediaUrl(chunks, constraints) {
@@ -177,7 +174,6 @@ export default class Timeline {
 
   startRecording() {
     if (!this.recorder) {
-      console.error('Ошибка: mediaRecorder не определен');
       return;
     }
 
